@@ -1,0 +1,1 @@
+json.partial! "chrooms/chroom", chroom: @chroom

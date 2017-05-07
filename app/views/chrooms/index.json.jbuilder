@@ -1,0 +1,1 @@
+json.array! @chrooms, partial: 'chrooms/chroom', as: :chroom

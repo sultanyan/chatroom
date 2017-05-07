@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChatRoom</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.png' %>
+  </head>
+
+  <body>
+	
+	<!-- Display navigation partial -->
+	<%= render 'partials/navigation' %>
+
+	<!-- If errors -->
+  	<div class="row">
+			
+		<% if flash[:notice] %>
+		<div class="col-md-6 col-md-offset-3">
+			<div class="alert alert-success infoDiv">
+				<p><%= flash[:notice] %></p>
+			</div>
+		</div>
+		<% end %>
+		
+		
+		<% if flash[:alert] %>
+		<div class="col-md-6 col-md-offset-3">
+			<div class="alert alert-danger infoDiv
+			">
+				<p><%= flash[:alert] %></p>
+			</div>
+	  	</div>
+	  	<% end %>
+
+	</div>
+
+	<!-- Display all dynamic content -->
+	<div class="container" id="mainContainer">
+		<div class="row">
+			<div class="col-md-8">
+			    <%= yield %>
+			</div>
+			<div class="col-md-4 com-md-offset-2">
+				<% if user_signed_in? %>
+				<% if params[:controller] == 'chrooms' %>
+				<h3>Your Chatrooms</h3>
+				<ul>
+					<% current_user.chrooms.each do |room| %>
+					<li><%= link_to room.name, room, data: { behavior: "chatroom-link", chatroom_id: room.id } %></li>
+					<% end %>
+				</ul>
+				<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	
+  </body>
+</html>

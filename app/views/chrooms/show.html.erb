@@ -1,0 +1,27 @@
+<h3> <%= @chroom.name %> </h3>
+<div data-behavior="messages" data-chatroom-id="<%= @chroom.id %>">
+	<% @chroom.messages.order("created_at desc").all.reverse.each do |msg| %>
+	<div class="singleMsg">
+		<ul>
+			<li >
+				<% if msg.user.avatar.exists? %>
+					<%= image_tag(msg.user.avatar.url, class: 'thumbnail smUserAvatar') %>
+				<% else %>
+					<% image_tag("http://placehold.it/100x100", class: 'thumbnail smUserAvatar') %>
+				<% end %>
+				<strong><span class="author"><%= msg.user.nickname %></span> </strong>
+				<span class="body"><%= msg.body %></span>
+				<span class="text-muted dateTime"><%= time_ago_in_words msg.created_at %> ago</span>
+			</li>
+		</ul>
+	</div>
+	<% end %>
+</div>
+
+<!-- With remote fake real redirects and then use turbolinks to complete action 
+I have a strage feeling about some errors coming to meet me -->
+<%= form_for [@chroom, Message.new], remote: true do |f| %>
+<div class="form-group">
+	<%= f.text_area :body, rows: 1, class: 'form-control', autofocus: true, id: "message" %>
+</div>
+<% end %>

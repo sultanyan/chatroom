@@ -1,0 +1,22 @@
+<%= form_for(chroom) do |f| %>
+  <% if chroom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chroom.errors.count, "error") %> prohibited this chroom from being saved:</h2>
+
+      <ul>
+      <% chroom.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Create Chatroom', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,56 @@
+.navbar
+{
+	border-radius: 0 !important;
+	margin-bottom: 70px !important;
+}
+
+.infoDiv
+{
+	height: 7px !important;
+
+	p{
+		line-height: 1px !important;
+	}
+}
+
+
+.userAvatar
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.singleMsg
+{
+	height: 30px;
+	background-color: #ccc;
+	margin-bottom: 15px;
+	border-radius: 12px;
+	.author{
+        padding-left: 30px;
+	    position: relative;
+	    top: -70px;
+	}
+
+	.body{
+		position: relative;
+		top: -10px;
+	    top: -70px;
+	    left: 25px;
+	    font-size: 14px;
+	    font-style: italic;
+	}
+	.dateTime{
+		font-size: 9px;
+	    top: -68px;
+	    left: 27px;
+	    position: relative;
+	}
+	.smUserAvatar{
+		width: 44px;
+	    border-radius: 50%;
+	    position: relative;
+        top: -24px;
+	    left: -42px;
+	}
+}
